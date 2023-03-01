@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+.logo {
+  display: flex;
+  padding: 0 40px;
+  background-color: #2b3743;
+  color: #ffffff;
+  height: 50px;
+  align-items: center;
+  box-shadow: 0 0 0.1rem 0px black;
+  font-size: 20px;
+}
+.back-btn {
+  display: flex;
+  padding: 0 15px;
+  justify-content: space-center;
+  align-items: center;
+  border-radius: 3px;
+  background-color: #2b3743;
+  color: #ffffff;
+  margin: 30px 20%;
+  height: 27px;
+  width: 90px;
+  box-shadow: 0 0 0.1rem 0px black;
+  border: none;
+}
+.back-arrow {
+  height: 20px;
+}
+.search-container {
+  padding: 10px 20%;
+}
+.newPageSearch {
+  width: 190px;
+  border-radius: 20px 0px 0px 20px;
+  border: none;
+  height: 25px;
+  padding-left: 10px;
+  background-color: #2b3743;
+  color: #ffffff;
+}
+.find-btn {
+  height: 25px;
+  border-radius: 0px 20px 20px 0;
+  border: none;
+  width: 50px;
+  background-color: #2b3743;
+  color: #ffffff;
+}
+.search-btn:hover {
+  background-color: teal;
+  transition: all 0.3s;
+}
+.country-details-container {
+  display: flex;
+  justify-content: space-around;
+  line-height: 1.5rem;
+  margin: 60px auto;
+  color: #ffffff;
+  width: 100vw;
+  max-width: 1400px;
+}
+.flag-img {
+  height: 200px;
+}
+.country-detail {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+  max-width: 400px;
+}
+.border-country {
+  display: flex;
+  justify-content: center;
+  padding: 0 40px;
+  color: #ffffff;
+}
+
+@media only screen and (max-width:750px) {
+  .country-details-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    align-items: center;
+  }
+  main {
+    overflow: hidden;
+  }
+  .country-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 10px;
+    /* align-items: center; */
+  }
+  .country-info-container {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    padding-top: 10px;
+  }
+  .back-btn {
+    margin: 10px auto 0 10%;
+  }
+  .search-container {
+    padding: 30px 30px;
+    display: flex;
+    justify-content: center;
+  }
+  .flag-img {
+    height: 170px;
+    margin-bottom: 30px;
+  }
+  .border-country {
+    display: none;
+  }
+  .country-name{
+    padding: 10px 0;
+    line-height: 2.3rem;
+  }
+}
