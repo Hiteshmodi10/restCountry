@@ -63,8 +63,12 @@
   width: 100vw;
   max-width: 1400px;
 }
+.country-info-container span{
+  color: #d0cccc;
+}
 .flag-img {
-  height: 200px;
+  height: fit-content;
+  width: 280px;
 }
 .country-detail {
   display: flex;
@@ -78,7 +82,9 @@
   padding: 0 40px;
   color: #ffffff;
 }
-
+.border-country span{
+  color: #d0cccc;
+}
 @media only screen and (max-width:750px) {
   .country-details-container {
     display: flex;
@@ -102,8 +108,10 @@
     flex-direction: column;
     align-items: center;
     text-align: left;
+    line-height: 2.2rem;
     padding-top: 10px;
   }
+ 
   .back-btn {
     margin: 10px auto 0 10%;
   }
@@ -118,9 +126,5 @@
   }
   .border-country {
     display: none;
-  }
-  .country-name{
-    padding: 10px 0;
-    line-height: 2.3rem;
   }
 }

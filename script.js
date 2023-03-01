@@ -156,6 +156,7 @@ function countryDetail() {
   fetch(`https://restcountries.com/v2/name/${searchCity.value}`)
     .then((response) => response.json())
     .then((response) => {
+      console.log(response);
       if (
         response.status !== 404 &&
         searchCity.value != searchCity.value.substring(0, 4)
@@ -230,6 +231,7 @@ function countryDetailNew() {
   fetch(`https://restcountries.com/v2/name/${newSearchcity.value}`)
     .then((response) => response.json())
     .then((response) => {
+      console.log(response);
       if (
         response.status !== 404 &&
         newSearchcity.value != newSearchcity.value.substring(0, 4)
