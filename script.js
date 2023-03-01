@@ -101,7 +101,9 @@ let countryNameDetail = document.querySelectorAll(".country-allname");
 let alltext = document.querySelectorAll(".text");
 
 function addPage() {
-  newPage.style.display = "block";
+  setTimeout(() => {
+    newPage.style.display = "block";
+  }, 10);
 }
 
 function removePage() {
@@ -112,7 +114,10 @@ function removePage() {
 searchBtn.addEventListener("click", cityInfo);
 newSearchbtn.addEventListener("click", newcityInfo);
 
-backButton.addEventListener("click", removePage);
+backButton.addEventListener("click", function(){
+  removePage()
+  window.location.reload()
+});
 
 searchCity.addEventListener("keypress", function (e) {
   if (e.key == "Enter") {
@@ -290,49 +295,24 @@ if (window.screen.width <= 920) {
   for (let i = 0; i < countryBox.length; i++) {
     boxFlagImg[i].addEventListener("click", function () {
       addPage();
-      countryName.textContent = boxCountryName[i].textContent;
-      nativeName.textContent = boxNativename[i].textContent;
-      region.textContent = boxRegion[i].textContent;
-      population.textContent = boxPopulation[i].textContent;
-      capital.textContent = boxCapitalName[i].textContent;
-      flagimg.src = boxFlagImg[i].src;
-      currency.textContent = boxCurrency[i].textContent;
-      language.textContent = boxLanguage[i].textContent;
-      area.textContent = boxArea[i].textContent;
-      subRegion.textContent = boxSubReigion[i].textContent;
-      borderCountry.textContent = boxBorderCountry[i].textContent;
+      searchCity.value = boxCountryName[i].textContent;
+      countryDetail();
+
     });
 
     countryNameDetail[i].addEventListener("click", function () {
       addPage();
-      countryName.textContent = boxCountryName[i].textContent;
-      nativeName.textContent = boxNativename[i].textContent;
-      region.textContent = boxRegion[i].textContent;
-      population.textContent = boxPopulation[i].textContent;
-      capital.textContent = boxCapitalName[i].textContent;
-      flagimg.src = boxFlagImg[i].src;
-      currency.textContent = boxCurrency[i].textContent;
-      language.textContent = boxLanguage[i].textContent;
-      area.textContent = boxArea[i].textContent;
-      subRegion.textContent = boxSubReigion[i].textContent;
-      borderCountry.textContent = boxBorderCountry[i].textContent;
+      searchCity.value = boxCountryName[i].textContent;
+      countryDetail();
     });
   }
 } else {
   for (let i = 0; i < countryBox.length; i++) {
     countryBox[i].addEventListener("click", function () {
       addPage();
-      countryName.textContent = boxCountryName[i].textContent;
-      nativeName.textContent = boxNativename[i].textContent;
-      region.textContent = boxRegion[i].textContent;
-      population.textContent = boxPopulation[i].textContent;
-      capital.textContent = boxCapitalName[i].textContent;
-      flagimg.src = boxFlagImg[i].src;
-      currency.textContent = boxCurrency[i].textContent;
-      language.textContent = boxLanguage[i].textContent;
-      area.textContent = boxArea[i].textContent;
-      subRegion.textContent = boxSubReigion[i].textContent;
-      borderCountry.textContent = boxBorderCountry[i].textContent;
+      searchCity.value = boxCountryName[i].textContent;
+      countryDetail();
     });
   }
+
 }
