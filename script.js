@@ -158,6 +158,7 @@ function countryDetail() {
         searchCity.value != searchCity.value.substring(0, 3)
       ) {
         addPage();
+        loading.textContent = 'Discover the world of countries'
         if (searchCity.value == "china" || searchCity.value == "China") {
           countryName.textContent = response[0].name;
           flagimg.src = response[0].flag;
@@ -192,7 +193,7 @@ function countryDetail() {
             response[response.length - 1].languages[0].name;
           area.textContent = `${response[response.length - 1].area} km square`;
           borderCountry.textContent = response[response.length - 1].borders;
-          // countryName.textContent = response[response.length - 1].name;
+          
           countryName.textContent = searchCity.value;
           flagimg.src = response[response.length - 1].flag;
 
@@ -211,6 +212,7 @@ function countryDetail() {
       } else {
         alert("pls enter correct country name ");
         loading.textContent = 'Discover the world of countries'
+       
       }
     });
 }
@@ -296,7 +298,6 @@ if (window.screen.width <= 920) {
       addPage();
       searchCity.value = boxCountryName[i].textContent;
       countryDetail();
-
     });
 
     countryNameDetail[i].addEventListener("click", function () {
