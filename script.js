@@ -101,9 +101,7 @@ let countryNameDetail = document.querySelectorAll(".country-allname");
 let alltext = document.querySelectorAll(".text");
 
 function addPage() {
-  setTimeout(() => {
-    newPage.style.display = "block";
-  }, 2000);
+  newPage.style.display = "block";
 }
 
 function removePage() {
@@ -139,6 +137,8 @@ function newcityInfo() {
   }
 }
 
+
+
 function countryDetail() {
   if (searchCity.value == "america" || searchCity.value == "America") {
     searchCity.value = "United States of America";
@@ -151,10 +151,11 @@ function countryDetail() {
   fetch(`https://restcountries.com/v2/name/${searchCity.value}`)
     .then((response) => response.json())
     .then((response) => {
-      console.log(response.status);
-      if (response.status !== 404) {
+      if (
+        response.status !== 404 &&
+        searchCity.value != searchCity.value.substring(0, 4)
+      ) {
         addPage();
-
         if (searchCity.value == "china" || searchCity.value == "China") {
           countryName.textContent = response[0].name;
           flagimg.src = response[0].flag;
@@ -169,7 +170,7 @@ function countryDetail() {
           console.log(response[0].nativeName);
         } else {
           countryName.textContent = response[response.length - 1].name;
-          flagimg.src = response[response.length - 1].flag; 
+          flagimg.src = response[response.length - 1].flag;
 
           if (Number(response[response.length - 1].population) > 1000000) {
             population.textContent = `${Math.trunc(
@@ -210,6 +211,9 @@ function countryDetail() {
       }
     });
 }
+
+
+
 function countryDetailNew() {
   if (newSearchcity.value == "america") {
     newSearchcity.value = "United States of America";
@@ -221,53 +225,67 @@ function countryDetailNew() {
   fetch(`https://restcountries.com/v2/name/${newSearchcity.value}`)
     .then((response) => response.json())
     .then((response) => {
-      console.log(response);
-      if (searchCity.value == "china" || searchCity.value == "China") {
-        countryName.textContent = response[0].name;
-        flagimg.src = response[0].flag;
-        nativeName.textContent = response[0].nativeName;
-        region.textContent = response[0].region;
-        subRegion.textContent = response[0].subregion;
-        capital.textContent = response[0].capital;
-        currency.textContent = response[0].currencies[0].name;
-        language.textContent = response[0].languages[0].name;
-        area.textContent = response[0].area;
-        borderCountry.textContent = response[0].borders;
-      } else {
-        flagimg.src = response[response.length - 1].flag;
-        countryName.textContent = newSearchcity.value;
-
-        if (Number(response[response.length - 1].population) > 1000000) {
-          population.textContent = `${Math.trunc(
-            Number(response[response.length - 1].population) / 1000000
-          )}M`;
+      if (
+        response.status !== 404 &&
+        newSearchcity.value != newSearchcity.value.substring(0, 4)
+      ) {
+        if (newSearchcity.value == "china" || newSearchcity.value == "China") {
+          countryName.textContent = response[0].name;
+          flagimg.src = response[0].flag;
+          nativeName.textContent = response[0].nativeName;
+          region.textContent = response[0].region;
+          subRegion.textContent = response[0].subregion;
+          capital.textContent = response[0].capital;
+          currency.textContent = response[0].currencies[0].name;
+          language.textContent = response[0].languages[0].name;
+          area.textContent = response[0].area;
+          borderCountry.textContent = response[0].borders;
         } else {
-          population.textContent = response[response.length - 1].population;
-        }
+          flagimg.src = response[response.length - 1].flag;
+          countryName.textContent = newSearchcity.value;
 
-        nativeName.textContent = response[response.length - 1].nativeName;
-        region.textContent = response[response.length - 1].region;
-        subRegion.textContent = response[response.length - 1].subregion;
-        capital.textContent = response[response.length - 1].capital;
-        currency.textContent = response[response.length - 1].currencies[0].name;
-        language.textContent = response[response.length - 1].languages[0].name;
-        area.textContent = response[response.length - 1].area;
-        borderCountry.textContent = response[response.length - 1].borders;
-        // countryName.textContent = response[response.length - 1].name;
+          if (Number(response[response.length - 1].population) > 1000000) {
+            population.textContent = `${Math.trunc(
+              Number(response[response.length - 1].population) / 1000000
+            )}M`;
+          } else {
+            population.textContent = response[response.length - 1].population;
+          }
 
-        if (Number(response[response.length - 1].population) > 1000000) {
-          population.textContent = `${Math.trunc(
-            Number(response[response.length - 1].population) / 1000000
-          )}M`;
-        } else {
-          population.textContent = response[response.length - 1].population;
+          nativeName.textContent = response[response.length - 1].nativeName;
+          region.textContent = response[response.length - 1].region;
+          subRegion.textContent = response[response.length - 1].subregion;
+          capital.textContent = response[response.length - 1].capital;
+          currency.textContent =
+            response[response.length - 1].currencies[0].name;
+          language.textContent =
+            response[response.length - 1].languages[0].name;
+          area.textContent = response[response.length - 1].area;
+          borderCountry.textContent = response[response.length - 1].borders;
+          // countryName.textContent = response[response.length - 1].name;
+
+          if (Number(response[response.length - 1].population) > 1000000) {
+            population.textContent = `${Math.trunc(
+              Number(response[response.length - 1].population) / 1000000
+            )}M`;
+          } else {
+            population.textContent = response[response.length - 1].population;
+          }
         }
+      }
+      else{
+        alert("please enter a valid country name")
       }
     });
   if (borderCountry.textContent == "") {
     borderCountry.textContent = "Country border the ocean";
   }
 }
+
+
+
+
+
 if (window.screen.width <= 920) {
   for (let i = 0; i < countryBox.length; i++) {
     boxFlagImg[i].addEventListener("click", function () {
