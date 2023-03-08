@@ -32,6 +32,7 @@
 }
 .search-container {
   padding: 10px 20%;
+  position: relative;
 }
 .newPageSearch {
   width: 190px;
@@ -140,5 +141,9 @@
   .border-country {
     display: none;
   }
- 
+  .autocomplete-items{
+    position: absolute;
+    top:100px;
+    z-index: 100;
+  }
 }

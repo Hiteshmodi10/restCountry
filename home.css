@@ -119,7 +119,6 @@ body {
 
   transition: all 0.3s;
   width: 170px;
-
 }
 
 .text:hover .hidden {
@@ -184,7 +183,6 @@ body {
   background-color: #fff;
   border-bottom: 1px solid #d4d4d4;
   width: 21%;
- 
 }
 .autocomplete-items div:hover {
   background-color: #e9e9e9;
@@ -207,7 +205,7 @@ body {
     cursor: auto;
     height: 100%;
   }
-  .country-box:hover{
+  .country-box:hover {
     scale: 1;
   }
   .country-flag {
@@ -218,16 +216,16 @@ body {
     width: 240px;
     height: 100%;
   }
-  .show{
+  .show {
     display: none;
   }
-  .hidden{
+  .hidden {
     display: block;
   }
-  .Country-name{
+  .Country-name {
     text-align: center;
   }
-  .region-container{
+  .region-container {
     display: none;
   }
   .text:hover {
@@ -236,7 +234,13 @@ body {
     border: none;
     transform: translateY(0px);
   }
+}
+@media  only screen and (max-width: 750px){
   .newPage{
     display: block;
+    z-index: 0;
+  }
+  body{
+    overflow: hidden;
   }
 }
