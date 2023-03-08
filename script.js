@@ -330,6 +330,7 @@ function countryDetail() {
     height: 59px ">`;
   }
   setLocalHistory();
+  
 }
 
 function countryBoxDetail() {
@@ -340,6 +341,7 @@ function countryBoxDetail() {
     ".loading-container"
   ).innerHTML = `<img src="https://media.tenor.com/wfEN4Vd_GYsAAAAM/loading.gif" alt=""  class = "loading-img" style= " background-color: transparent;">`;
 }
+
 function countryDetailNew() {
   someCountryCondition();
   data.unshift(newSearchcity.value);
@@ -348,21 +350,25 @@ function countryDetailNew() {
   } else if (newSearchcity.value == "") {
     alert("pls enter country name");
   } else {
-    scanApi();
     document.querySelector(".main-container").style.display = "none";
+    document.querySelector(".loading-container").style.display = "block";
+    scanApi();
     document.querySelector(
       ".loading-container"
-    ).innerHTML = `<img src="https://media.tenor.com/wfEN4Vd_GYsAAAAM/loading.gif" alt=""  class = "loading-img" style= " background-color: transparent;">`;
+    ).innerHTML = `<img src="https://media.tenor.com/wfEN4Vd_GYsAAAAM/loading.gif" alt=""  class = "loading-img">`;
+    newSearchcity.value == ""
   }
   setLocalHistoryNew();
 }
 
 function someCountryCondition() {
-  if (searchCity.value == "america" || searchCity.value == "America") {
+  if (searchCity.value == "america" || searchCity.value == "America" || newSearchcity.value == "America" || newSearchcity.value == "america") {
     searchCity.value = "United States of America";
+    newSearchcity.value = "United States of America";
   }
-  if (searchCity.value == "england" || searchCity.value == "England") {
+  if (searchCity.value == "england" || searchCity.value == "England" || newSearchcity.value == "England" || newSearchcity.value == "england") {
     searchCity.value = "United kingdom";
+    newSearchcity.value = "United kingdom";
   }
 }
 
@@ -370,13 +376,11 @@ function scanApi() {
   fetch(`https://restcountries.com/v2/name/${data[0]} `)
     .then((response) => response.json())
     .then((response) => {
-      console.log(response);
-      if (response.status != 404) {
         addPage();
         loading.textContent = "Discover the world of countries";
-        document.querySelector(".loading-container").style.display = "none";
         document.querySelector(".main-container").style.display = "block";
-        if (searchCity.value == "china" || searchCity.value == "China") {
+        document.querySelector(".loading-container").style.display = "none";
+        if (searchCity.value == "china" || searchCity.value == "China" || newSearchcity.value == "China" || newSearchcity.value == "china") {
           response.length = 1;
         }
         {
@@ -414,13 +418,13 @@ function scanApi() {
             borderCountry.textContent = "Country border the ocean";
           }
         }
-      } else {
-        alert("pls enter correct country name ");
-        loading.textContent = "Discover the world of countries";
-        document.querySelector(".loading-container").style.display = "none";
-        document.querySelector(".main-container").style.display = "block";
-      }
-    });
+      } 
+    ).catch((e)=> {
+      alert("pls enter correct country name ");
+      loading.textContent = "Discover the world of countries";
+      document.querySelector(".loading-container").style.display = "none";
+      document.querySelector(".main-container").style.display = "block";
+    })
 }
 
 
@@ -741,7 +745,7 @@ function setLocalHistoryNew() {
 
 
 if (recentSearch !== "") {
- 
+
       for (let i = 0; i < recentSearch.length; i++) {
         fetch(`https://restcountries.com/v2/name/${recentSearch[i]}`)
         .then((response) => response.json())
